@@ -1,0 +1,95 @@
+AS65 Assembler for R6502 [1.42].                                     Page    1
+------------------------------- Project_v2.asm -------------------------------
+
+86 lines read, no errors in pass 1.
+                        
+1700 =                  PortAS		equ	$1700
+1701 =                  PortASDDR	equ	$1701
+1740 =                  PortAK		equ	$1740
+1741 =                  PortAKDDR	equ	$1741
+1f6a =                  GetKey		equ	$1F6A
+                        
+0200 =                  		org	$0200
+                        
+                        		code
+                        ;-----------------------------------------------------
+                        ;--------------------------------------- Main --------
+                        ;-----------------------------------------------------
+0200 : a903             		lda	#$03
+0202 : 8d0117           		sta	PortASDDR
+0205 : a900             		lda	#$00
+0207 : 8d4117           		sta	PortAKDDR
+020a : 205402           Start:		jsr	Scan
+020d : 8c9901           		sty	$0199
+0210 : a901             		lda	#$01
+0212 : 205d02           		jsr	Wave
+0215 : ac9901           		ldy	$0199
+0218 : a901             		lda	#$01
+021a : 205d02           		jsr	Wave
+021d : 206a1f           Wait:		jsr	GetKey
+0220 : cd9901           		cmp	$0199
+0223 : f0f8             		beq	Wait
+0225 : 204e02           		jsr	Delay100
+                        ;		jsr	Scan
+0228 : a00f             		ldy	#$0F
+022a : a902             		lda	#$02
+022c : 205d02           		jsr	Wave
+022f : a00f             		ldy	#$0F
+0231 : a902             		lda	#$02
+0233 : 205d02           		jsr	Wave
+0236 : a00f             		ldy	#$0F
+0238 : a902             		lda	#$02
+023a : 205d02           		jsr	Wave
+023d : a00f             		ldy	#$0F
+023f : a902             		lda	#$02
+0241 : 205d02           		jsr	Wave
+0244 : a00f             		ldy	#$0F
+0246 : a902             		lda	#$02
+0248 : 205d02           		jsr	Wave
+024b : 4c0a02           		jmp	Start
+                        
+                        ;-----------------------------------------------------
+                        ;--------------------------------------- Delay -------
+                        ;-----------------------------------------------------
+                        
+024e : a214             Delay100: 		ldx	#$14
+0250 : ca               Jump:		dex
+0251 : d0fd             		bne	Jump
+0253 : 60               		rts
+                        
+                        ;-----------------------------------------------------
+                        ;----------------------- Scans for the key press and s
+                        ;-----------------------------------------------------
+                        
+                        
+0254 : 206a1f           Scan:		jsr	GetKey
+AS65 Assembler for R6502 [1.42].                                     Page    2
+------------------------------- Project_v2.asm -------------------------------
+
+0257 : c915             		cmp	#$15
+0259 : f0f9             		beq	Scan
+025b : a8               		tay
+025c : 60               		rts
+                        
+                        ;-----------------------------------------------------
+                        ;-------------------Generates digital signal from regi
+                        ;-----------------------------------------------------
+                        
+025d : 8d0017           Wave:		sta	PortAS
+0260 : 204e02           Delay1:		jsr	Delay100
+0263 : 88               		dey
+0264 : d0fa             		bne	Delay1
+0266 : a900             		lda	#$00
+0268 : 8d0017           		sta	PortAS
+026b : a0c8             		ldy	#$C8
+026d : 204e02           Delay2:		jsr	Delay100
+0270 : 88               		dey
+0271 : d0fa             		bne	Delay2
+0273 : 60               		rts
+                        
+                        
+                        
+                        
+                        
+                        
+No errors in pass 2.
