@@ -1,2 +1,7 @@
 # Academic-Projects
-In class projects completed at the University of Mass. Amherst from Fall 2020-Spring 2024
+In class projects completed at the University of Massachussets, Amherst from Fall 2020-Spring 2024
+
+Class Summary 
+ECE 112 - Introduction to Programming (Freshman Year 2020 - Python)
+ECE 231 - Introduction to Embedded Systems (Spring Sophmore Year 2022 - C)
+ECE 241 - Advanced Programming (Fall Sophmore Year 2021 - Python)
