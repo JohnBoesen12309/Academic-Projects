@@ -1,0 +1,5 @@
+wireless 10
+RFID 30.5
+Sensor 5.3
+operating system 1.8
+TCP 6

@@ -1,0 +1,18 @@
+#!/bin/bash
+for xx in `ls input.txt?`
+do
+	echo \#\#\#Running Testcase $xx
+	cd ..
+	cp testcases/$xx input.txt
+	./HR_sorter > testcases/$xx.out
+	cd testcases
+	if diff $xx.out $xx.sol >/dev/null; then
+		echo \#Result Matches testcases/$xx.sol
+#    elif diff $xx.out $xx.sol2 >/dev/null; then
+ #       echo \#Result Matches testcases/$xx.sol
+	else
+		echo \#Difference in output from testcases/$xx.sol
+		diff $xx.out $xx.sol
+	fi
+done
+

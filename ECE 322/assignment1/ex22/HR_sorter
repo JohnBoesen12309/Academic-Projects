@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Put your code here
+# You may only use the following external programs: ls, echo, awk, cat, grep, sort, wc, bc
+i=0
+re='^[0-9]+'
+while read p
+do
+	for ii in $p
+	do 
+		if ! [[ $ii =~ $re ]]
+		then							
+			words[i]+=$ii" "
+		else
+			numbers[i]=$ii
+		fi
+	done
+	((i++))
+	
+done <input.txt
+
+for xx in `ls submissions`
+do
+	cat submissions/$xx | awk -v wo="${words[*]}" -v nu="${numbers[*]}" -v len=$i -v name=$xx '
+BEGIN{ 
+
+split(wo,word,"  ")
+split(nu,number," ")
+
+}
+{
+
+$0=tolower($0)
+z=1
+while ( z < len+1){ 
+	word[z]=tolower(word[z])
+	if (match($0,word[z])) {
+		temp[z] += 1
+		}	
+	if (temp[z] == ""){
+		temp[z]=0	
+	}
+	(z++)
+	}
+}
+END{
+ii=1
+for (xx in temp){
+	sum += temp[xx]*number[ii]
+	(ii++)
+	}
+print(sum,name)
+
+}'
+done | sort -g -r
+	
+
+
