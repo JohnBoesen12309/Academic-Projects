@@ -1,0 +1,54 @@
+ The mathematical functions <b>exp</b>, <b>log</b>, <b>sqrt</b>, <b>sin</b>, <b>cos</b>, and <b>atan2</b> are
+       built in.  Other built-in functions:
+
+       <b>length</b> the length of its argument taken as a string, or  of  <b>$0</b>  if  no
+              argument.
+
+       <b>rand</b>   random number on (0,1)
+
+       <b>srand</b>  sets seed for <b>rand</b> and returns the previous seed.
+
+       <b>int</b>    truncates to an integer value
+
+       <b>substr(</b><i>s</i><b>,</b> <i>m</i><b>,</b> <i>n</i><b>)</b>
+              the <i>n</i>-character substring of <i>s</i> that begins at position <i>m</i> counted
+              from 1.
+
+       <b>index(</b><i>s</i><b>,</b> <i>t</i><b>)</b>
+              the position in <i>s</i> where the string <i>t</i> occurs, or  0  if  it  does
+              not.
+
+       <b>match(</b><i>s</i><b>,</b> <i>r</i><b>)</b>
+              the position in <i>s</i> where the regular expression <i>r</i> occurs, or 0 if
+              it does not.  The variables <b>RSTART</b> and <b>RLENGTH</b> are  set  to  the
+              position and length of the matched string.
+
+       <b>split(</b><i>s</i><b>,</b> <i>a</i><b>,</b> <i>fs</i><b>)</b>
+              splits  the  string <i>s</i> into array elements <i>a</i><b>[1]</b><i>,</i> <i>a</i><b>[2]</b><i>,</i> ..., <i>a</i><b>[</b><i>n</i><b>]</b><i>,</i>
+              and returns <i>n</i>.  The separation is done with the regular  expres-
+              sion  <i>fs</i>  or with the field separator <b>FS</b> if <i>fs</i> is not given.  An
+              empty string as field separator splits the string into one array
+              element per character.
+
+       <b>sub(</b><i>r</i><b>,</b> <i>t</i><b>,</b> <i>s</i><b>)</b>
+              substitutes <i>t</i> for the first occurrence of the regular expression
+              <i>r</i> in the string <i>s</i>.  If <i>s</i> is not given, <b>$0</b> is used.
+
+       <b>gsub</b>   same as <b>sub</b> except that all occurrences of the  regular  expres-
+              sion  are  replaced;  <b>sub</b> and <b>gsub</b> return the number of replace-
+              ments.
+
+       <b>sprintf(</b><i>fmt</i><b>,</b> <i>expr</i><b>,</b> <i>...</i> <b>)</b>
+              the string resulting from formatting <i>expr</i> <i>...</i>  according to  the
+              <b><a href="/man/3/printf/">printf(3)</a></b> format <i>fmt</i>
+
+       <b>system(</b><i>cmd</i><b>)</b>
+              executes <i>cmd</i> and returns its exit status
+
+       <b>tolower(</b><i>str</i><b>)</b>
+              returns  a copy of <i>str</i> with all upper-case characters translated
+              to their corresponding lower-case equivalents.
+
+       <b>toupper(</b><i>str</i><b>)</b>
+              returns a copy of <i>str</i> with all lower-case characters  translated
+              to their corresponding upper-case equivalents.
